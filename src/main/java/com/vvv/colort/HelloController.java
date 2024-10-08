@@ -410,11 +410,11 @@ public class HelloController implements Initializable {
 
         c=C;m=M;y=Y;k=K;
         R = (abs(255 * (1 - c/100) * (1 - k/100)));
-        if(R>255) R=255;
         G = (abs(255 * (1 - m/100) * (1 - k/100)));
-        if(G>255) G=255;
         B = (abs(255 * (1 - y/100) * (1 - k/100)));
+        if(R>255) R=255;
         if(B>255) B=255;
+        if(G>255) G=255;
     }
 
 //------------------------------------------
@@ -503,8 +503,11 @@ public void labToRgb() {
     double b_rescaled = (b_val > 0.0031308) ? (1.055 * Math.pow(b_val, 1/2.4) - 0.055) : 12.92 * b_val;
     // ----------------------------
     R = (int) Math.round(r_rescaled * 255);
+    if(R>255) R=255;
     G = (int) Math.round(g_rescaled * 255);
+    if(G>255) G=255;
     B = (int) Math.round(b_rescaled * 255);
+    if(B>255) B=255;
    }
 
     //------------------------------------------------------
@@ -596,6 +599,11 @@ public void labToRgb() {
         R = Math.round((rPrime + m) * 255);
         G = Math.round((gPrime + m) * 255);
         B = Math.round((bPrime + m) * 255);
+
+        if(R>255) R=255;
+        if(B>255) B=255;
+        if(G>255) G=255;
+
     }
 
 }
